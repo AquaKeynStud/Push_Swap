@@ -62,13 +62,44 @@ static int	check_char(char *s)
 	return (0);
 }
 
+static int	check_args(char **s)
+{
+	long	n;
+	long	temp;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 1;
+	while (*s[i])
+	{
+		if (check_char(s[i]))
+			return (1);
+		n = ft_atol(s[i]);
+		while (*s[j])
+		{
+			temp = ft_atol(s[j]);
+			if (n == temp || n > INT_MAX || temp > INT_MAX)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
-	if (argc < 2)
-		return (0);
-	else if (argc == 2)
+	if (argc == 2)
 	{
 		if (check_char(argv[1]) || check_double(argv[1]))
 			return (print("Error\n"));
 	}
+	else if (argc > 2)
+	{
+		if (check_args(argv + 1))
+			return (print("Error\n"));
+	}
+	else
+		return (0);
 }

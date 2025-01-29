@@ -4,13 +4,13 @@ NAME = push_swap
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
-CC := cc
+CC				:=	gcc
 
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS			:=	-Wall	-Wextra	-Werror
 
-RM := rm -rf
+RM				:=	rm	-rf
 
-SHOW_MSG_CLEAN = true
+SHOW_MSG_CLEAN	=	true
 
 # ╰━━━━━━━━━━━━━━━━════════════════╛出 ❖ 力╘════════════════━━━━━━━━━━━━━━━━╯ #
 
@@ -28,18 +28,19 @@ LST_SRC	=	main.c \
 
 LST_UTL	=	pass_next_nb.c \
 			ft_atol.c \
+			print.c \
 
 # LST_INST	=
 
-LST_INC = 	push_swap.h \
+LST_INC	=	push_swap.h \
 
 # files paths
-SRC 	=	$(addprefix $(D_SRC), $(LST_SRC))
-UTL		=	$(addprefix $(D_UTL), $(LST_UTL))
-INC 	= 	$(addprefix $(D_INC), $(LST_INC))
+SRC	=	$(addprefix $(D_SRC), $(LST_SRC))
+UTL	=	$(addprefix $(D_UTL), $(LST_UTL))
+INC	=	$(addprefix $(D_INC), $(LST_INC))
 
-OBJ 	= 	$(subst  $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
-OBJ 	+= 	$(subst  $(D_UTL), $(D_OBJ), $(UTL:.c=.o))
+OBJ	=	$(subst  $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
+OBJ	+=	$(subst  $(D_UTL), $(D_OBJ), $(UTL:.c=.o))
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ RULES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
@@ -72,3 +73,5 @@ re :
 	$(MAKE) fclean
 	$(MAKE) all
 	@echo "\e[0;32mExecutable de push_swap recréé avec succès ! 🫡\e[0m"
+
+# dos2unix Makefile
