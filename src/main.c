@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:29:58 by arocca            #+#    #+#             */
-/*   Updated: 2025/01/29 15:20:32 by arocca           ###   ########.fr       */
+/*   Updated: 2025/01/29 19:01:09 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,50 @@
 #include <unistd.h>
 #include "push_swap.h"
 
-int	print(char *s)
+static int	check_double(char *s)
 {
-	int	i;
-	int	success;
-
-	i = 0;
-	while (s[i])
-		i++;
-	if (!s)
-		return (-1);
-	success = write(1, s, i);
-	if (success == -1)
-		return (-1);
-	return (1);
-}
-
-int	check_string(char *s)
-{
-	int		n;
-	int		temp;
-	size_t	i;
+	long	n;
+	long	temp;
+	int		i;
 
 	while (*s)
 	{
-		n = ft_atoi(s);
-		s += c_d(n);
+		n = ft_atol(s);
+		s += pass_next_nb(s, 0);
 		i = 0;
 		while (s[i])
 		{
-			temp = ft_atoi(&s[i]);
-			if (n == temp)
-				return (print("Error\n"));
+			temp = ft_atol(&s[i]);
+			if (n == temp || temp > INT_MAX)
+				return (1);
 			else
-				i += c_d(temp);
+			{
+				if (!pass_next_nb(s, i))
+					break ;
+				i += pass_next_nb(s, i);
+			}
 		}
+	}
+	return (0);
+}
+
+static int	check_char(char *s)
+{
+	while (*s)
+	{
+		if ((*s >= '0' && *s <= '9') || *s == ' ' || *s == '-' || *s == '+')
+		{
+			while ((*s >= '0' && *s <= '9') || *s == ' ')
+				s++;
+			if (*s == '-' || *s == '+')
+			{
+				s++;
+				if (*s == '+' || *s == '-' || *s < '0' || *s > '9')
+					return (1);
+			}
+		}
+		else
+			return (1);
 	}
 	return (0);
 }
@@ -58,32 +67,8 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	else if (argc == 2)
-		check_string(argv[argc - 1]); // Fonction pour check une grande chaine regroupant les arguments
-	//else
-		//check_args(*argv[1]); // Fonction pour check les arguments envoyés à la suite
+	{
+		if (check_char(argv[1]) || check_double(argv[1]))
+			return (print("Error\n"));
+	}
 }
-
-// int	check_string(char *s)
-// {
-// 	unsigned int	i;
-// 	int				**tab;
-// 	int				**temptab;
-
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] != ' ' && (s[i] < '0' || s[i] > '9'))
-// 			return (print(1, "Error\n"));
-// 	}
-// 	tab = (int **)malloc(sizeof(int *) + 1);
-// 	if (!tab)
-// 		return (1);
-// 	tab[0] = ft_atoi(*s);
-// 	tab[1] = 0;
-// 	s += c_d(tab[0]);
-// 	while (*s)
-// 	{
-// 		temptab = (int **)malloc(sizeof(tab) + sizeof(int *) + 1);
-// 		ft_memove
-// 	}
-// }

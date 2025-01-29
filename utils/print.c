@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_digit.c                                      :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 14:56:39 by arocca            #+#    #+#             */
-/*   Updated: 2025/01/29 14:56:44 by arocca           ###   ########.fr       */
+/*   Created: 2025/01/29 19:00:19 by keyn              #+#    #+#             */
+/*   Updated: 2025/01/29 19:00:35 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	c_d(int nb)
+#include <unistd.h>
+
+int	print(char *s)
 {
 	int	i;
+	int	success;
 
-	i = 1;
-	if (nb < 0)
-		nb *= -1;
-	while (nb / 10)
-	{
-		nb /= 10;
+	i = 0;
+	while (s[i])
 		i++;
-	}
-	return (i);
+	if (!s)
+		return (-1);
+	success = write(1, s, i);
+	if (success == -1)
+		return (-1);
+	return (1);
 }

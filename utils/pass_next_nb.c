@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   pass_next_nb.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/01/29 19:00:55 by keyn             ###   ########.fr       */
+/*   Created: 2025/01/29 14:56:39 by arocca            #+#    #+#             */
+/*   Updated: 2025/01/29 18:50:20 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+int	pass_next_nb(char *s, int passed)
+{
+	int	i;
 
-# include <stddef.h>
-
-/* -- Utils -- */
-long	ft_atol(const char *nptr);
-int		pass_next_nb(char *s, int passed);
-int		print(char *s);
-
-/* -- Sources -- */
-
-
-/* -- Instructions -- */
-
-#endif
+	i = 0;
+	while (*s == ' ' || *s == '-' || *s == '+')
+	{
+		i++;
+		s++;
+	}
+	while (*s >= '0' && *s <= '9')
+	{
+		i++;
+		s++;
+	}
+	return (i - passed);
+}

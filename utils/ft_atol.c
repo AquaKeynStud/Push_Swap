@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:39:20 by arocca            #+#    #+#             */
-/*   Updated: 2025/01/29 15:20:39 by arocca           ###   ########.fr       */
+/*   Updated: 2025/01/29 18:57:09 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
 
-int	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	unsigned long long	res;
-	int					sign;
+	long				sign;
 
 	res = 0;
 	sign = 1;
@@ -31,10 +31,8 @@ int	ft_atoi(const char *nptr)
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		res = res * 10 + (*nptr++ - '0');
-		if (res > LLONG_MAX && sign < 0)
-			return (0);
 		if (res > LLONG_MAX)
-			return (-1);
+			return (LONG_MAX);
 	}
-	return (((int)res) * sign);
+	return (((long)res) * sign);
 }
