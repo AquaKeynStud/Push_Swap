@@ -6,14 +6,30 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/01/30 10:09:44 by keyn             ###   ########.fr       */
+/*   Updated: 2025/01/30 17:22:50 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stddef.h>
+# include <stdlib.h>
+
+/* -- Structures -- */
+typedef struct	s_node
+{
+	int				value;
+	int				index;
+	struct	s_node	*next;
+	struct	s_node	*prev;
+}				t_node;
+
+typedef struct	s_stack
+{
+	t_node	*top;
+	t_node	*bottom;
+	int		size;
+}				t_stack;
 
 /* -- Utils -- */
 long	ft_atol(const char *nptr);

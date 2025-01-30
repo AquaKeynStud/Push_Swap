@@ -24,11 +24,12 @@ D_INC	=	inc/
 D_OBJ	=	.obj/
 
 # file lists
-LST_SRC	=	main.c \
+LST_SRC	=	main.c			\
+			input_parsing.c	\
 
-LST_UTL	=	pass_next_nb.c \
-			ft_atol.c \
-			print.c \
+LST_UTL	=	pass_next_nb.c	\
+			ft_atol.c		\
+			print.c			\
 
 # LST_INST	=
 

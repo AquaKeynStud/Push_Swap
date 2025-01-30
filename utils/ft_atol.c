@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:39:20 by arocca            #+#    #+#             */
-/*   Updated: 2025/01/29 18:57:09 by keyn             ###   ########.fr       */
+/*   Updated: 2025/01/30 16:25:48 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ long	ft_atol(const char *nptr)
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		res = res * 10 + (*nptr++ - '0');
-		if (res > LLONG_MAX)
+		if (res > 2147483648 || (res > 2147483647 && sign > 0))
 			return (LONG_MAX);
 	}
 	return (((long)res) * sign);

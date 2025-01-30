@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:00:31 by keyn              #+#    #+#             */
-/*   Updated: 2025/01/30 10:09:37 by keyn             ###   ########.fr       */
+/*   Updated: 2025/01/30 16:57:53 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,5 @@ int	check_input(int argc, char **argv)
 		if (parse_input_args(argv + 1))
 			return (print("Error\n"));
 	}
-	else
-		return (0);
 	return (0);
 }
