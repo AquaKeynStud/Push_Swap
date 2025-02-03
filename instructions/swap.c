@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pass_next_nb.c                                     :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 14:56:39 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/03 14:16:48 by arocca           ###   ########.fr       */
+/*   Created: 2025/02/03 14:38:06 by arocca            #+#    #+#             */
+/*   Updated: 2025/02/03 15:07:40 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	pass_next_nb(char *s)
+void	swap(t_stack **stack, char *s_name)
 {
-	int	i;
+	t_node	*tmp;
 
-	i = 0;
-	while (s[i] && (s[i] >= '0' && s[i] <= '9'))
-		i++;
-	while (s[i] && (s[i] == ' ' || s[i] == '-' || s[i] == '+'))
-		i++;
-	return (i);
+	if (!stack || !(*stack) || !((*stack) -> top) || !((*stack) -> top -> next))
+		return ;
+	tmp = (*stack) -> top;
+	(*stack) -> top = (*stack) -> top -> next;
+	tmp -> next = (*stack) -> top -> next;
+	(*stack) -> top -> next = tmp;
+	if (s_name)
+		print(s_name);
+	return ;
+}
+
+void	sswap(t_stack **a, t_stack **b)
+{
+	swap(a, NULL);
+	swap(b, NULL);
+	print("ss\n");
+	return ;
 }

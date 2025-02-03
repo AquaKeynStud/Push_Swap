@@ -4,7 +4,7 @@ NAME = push_swap
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
-CC				:=	gcc
+CC				:=	cc
 
 CFLAGS			:=	-Wall	-Wextra	-Werror
 
@@ -23,32 +23,46 @@ D_UTL	=	utils/
 D_INC	=	inc/
 D_OBJ	=	.obj/
 
+D_UT	=	Tests_et_utils/
+
 # file lists
-LST_SRC	=	main.c			\
-			input_parsing.c	\
+LST_SRC		=	main.c				\
+				input_parsing.c		\
+				stacks.c			\
 
-LST_UTL	=	pass_next_nb.c	\
-			ft_atol.c		\
-			print.c			\
+LST_UTL		=	pass_next_nb.c		\
+				ft_atol.c			\
+				print.c				\
 
-# LST_INST	=
+LST_INST	=	swap.c				\
+				push.c				\
+				rotate_reverse.c	\
 
-LST_INC	=	push_swap.h \
+LST_INC		=	push_swap.h 		\
+
+
+LST_UT		=	stack_print.c		\
 
 # files paths
-SRC	=	$(addprefix $(D_SRC), $(LST_SRC))
-UTL	=	$(addprefix $(D_UTL), $(LST_UTL))
-INC	=	$(addprefix $(D_INC), $(LST_INC))
+SRC		=	$(addprefix $(D_SRC), $(LST_SRC))
+UTL		=	$(addprefix $(D_UTL), $(LST_UTL))
+INST	=	$(addprefix $(D_INST), $(LST_INST))
+INC		=	$(addprefix $(D_INC), $(LST_INC))
+
+UT		=	$(addprefix $(D_UT), $(LST_UT))
 
 OBJ	=	$(subst  $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
 OBJ	+=	$(subst  $(D_UTL), $(D_OBJ), $(UTL:.c=.o))
+OBJ	+=	$(subst  $(D_INST), $(D_OBJ), $(INST:.c=.o))
+
+OBJ	+=	$(subst  $(D_UT), $(D_OBJ), $(UT:.c=.o))
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ RULES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@$(CC) $(OBJ) -o $@
+	@$(CC) -g $(OBJ) -o $@
 	@echo "\e[0;32mProgramme créé avec succès ! 🧬\e[0m"
 
 $(D_OBJ)%.o: $(D_SRC)%.c $(D_INC)push_swap.h
@@ -56,6 +70,15 @@ $(D_OBJ)%.o: $(D_SRC)%.c $(D_INC)push_swap.h
 	$(CC) $(CFLAGS) -I$(D_INC) -c $< -o $@
 
 $(D_OBJ)%.o: $(D_UTL)%.c $(D_INC)push_swap.h
+	@mkdir -p $(D_OBJ)
+	$(CC) $(CFLAGS) -I$(D_INC) -c $< -o $@
+
+$(D_OBJ)%.o: $(D_INST)%.c $(D_INC)push_swap.h
+	@mkdir -p $(D_OBJ)
+	$(CC) $(CFLAGS) -I$(D_INC) -c $< -o $@
+
+
+$(D_OBJ)%.o: $(D_UT)%.c $(D_INC)push_swap.h
 	@mkdir -p $(D_OBJ)
 	$(CC) $(CFLAGS) -I$(D_INC) -c $< -o $@
 

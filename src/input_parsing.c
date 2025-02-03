@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:00:31 by keyn              #+#    #+#             */
-/*   Updated: 2025/01/30 16:57:53 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/03 14:26:48 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,18 @@ int	parse_input_string(char *s)
 
 	while (*s)
 	{
-		n = ft_atol(s);
-		s += pass_next_nb(s, 0);
 		i = 0;
+		while (*s == ' ')
+			s++;
+		n = ft_atol(s);
+		s += pass_next_nb(s);
 		while (s[i])
 		{
 			temp = ft_atol(&s[i]);
-			if (n == temp || n > INT_MAX || temp > INT_MIN)
+			if (n == temp || n > INT_MAX || temp > INT_MAX)
 				return (1);
 			else
-			{
-				if (!pass_next_nb(s, i))
-					break ;
-				i += pass_next_nb(s, i);
-			}
+				i += pass_next_nb(s + i);
 		}
 	}
 	return (0);

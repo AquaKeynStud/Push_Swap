@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pass_next_nb.c                                     :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 14:56:39 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/03 14:16:48 by arocca           ###   ########.fr       */
+/*   Created: 2025/02/03 14:38:36 by arocca            #+#    #+#             */
+/*   Updated: 2025/02/03 15:21:13 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	pass_next_nb(char *s)
+void	push(t_stack **from, t_stack **to, char *to_name)
 {
-	int	i;
+	t_node	*tmp;
 
-	i = 0;
-	while (s[i] && (s[i] >= '0' && s[i] <= '9'))
-		i++;
-	while (s[i] && (s[i] == ' ' || s[i] == '-' || s[i] == '+'))
-		i++;
-	return (i);
+	if (!from || !(*from) || !((*from) -> top) || !to || !(*to))
+		return ;
+	tmp = (*from) -> top;
+	(*from) -> top = (*from) -> top -> next;
+	tmp -> next = (*to) -> top;
+	(*to) -> top = tmp;
+	(*from) -> size--;
+	(*to) -> size++;
+	print(to_name);
+	return ;
 }
