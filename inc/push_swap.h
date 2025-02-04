@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 12:13:29 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 15:25:23 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ int		pass_next_nb(char *s);
 int		print(char *s);
 
 /* -- Sources -- */
-int	check_no_char(char *s);
-int	parse_input_string(char *s);
-int	parse_input_args(char **s);
-int	check_input(int argc, char **argv);
+int		check_input(int argc, char **argv);
+int		sorted_test(t_stack	*stack);
 
-void	create_node_back(t_stack **stack, int n);
-void	free_stack(t_stack **stack);
 t_stack	*create_stack();
 t_stack	*init_stack(char **argv, int isLongString);
+void	create_node_back(t_stack **stack, int n);
+void	free_stack(t_stack **stack);
+int		free_all_stacks(t_stack **a, t_stack **b, int is_err);
 
 t_node	*get_max(t_stack *stack, int no_index);
 int		get_num_bits(int max);

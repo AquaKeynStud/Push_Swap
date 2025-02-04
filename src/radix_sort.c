@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:04:01 by keyn              #+#    #+#             */
-/*   Updated: 2025/02/04 12:18:23 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 16:06:56 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,17 @@ t_node	*get_max(t_stack *stack, int no_index)
 	if (!stack || !stack -> top)
 		return (NULL);
 	current = stack -> top;
-	max = current;
+	max = NULL;
 	while (current)
 	{
-		if (current -> value > max -> value)
+		if (no_index && current -> index == -1)
 		{
-			if ((no_index && current -> index == -1) || (!no_index))
+			if (!max || current -> value > max -> value)
+				max = current;
+		}
+		else if (!no_index)
+		{
+			if (!max || current -> value > max -> value)
 				max = current;
 		}
 		current = current -> next;
@@ -53,7 +58,9 @@ void	index_stack(t_stack *stack)
 	{
 		max = get_max(stack, 1);
 		if (max)
+		{
 			max -> index = index;
+		}
 		index--;
 	}
 	return ;
@@ -67,7 +74,6 @@ void	radix_sort(t_stack **a, t_stack **b)
 	int	j;
 	t_node	*current;
 
-	print_stack(*a, "a");
 	num_bits = get_num_bits(get_max(*a, 0) -> index);
 	i = 0;
 	while (i < num_bits)

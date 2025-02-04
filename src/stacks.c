@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:20:49 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 14:35:11 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 15:25:44 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	create_node_back(t_stack **stack, int n)
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (free_stack(stack));
-	new_node -> value = n;
-	new_node -> index = -1;
-	new_node -> next = NULL;
-	new_node -> prev = NULL;
-	if (!(*stack) -> top)
+	new_node->value = n;
+	new_node->index = -1;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	if (!(*stack)->top)
 	{
-		(*stack) -> top = new_node;
-		(*stack) -> bottom = new_node;
+		(*stack)->top = new_node;
+		(*stack)->bottom = new_node;
 	}
 	else
 	{
-		(*stack) -> bottom -> next = new_node;
-		new_node -> prev = (*stack) -> bottom;
-		(*stack) -> bottom = new_node;
+		(*stack)->bottom->next = new_node;
+		new_node->prev = (*stack)->bottom;
+		(*stack)->bottom = new_node;
 	}
-	(*stack) -> size++;
+	(*stack)->size++;
 }
 
 void	free_stack(t_stack **stack)
@@ -45,27 +45,36 @@ void	free_stack(t_stack **stack)
 
 	if (!stack || !(*stack))
 		return ;
-	while ((*stack) -> top)
+	while ((*stack)->top)
 	{
-		tmp = (*stack) -> top;
-		free((*stack) -> top -> next);
-		(*stack) -> top = tmp;
+		tmp = (*stack)->top->next;
+		free((*stack)->top);
+		(*stack)->top = tmp;
 	}
 	free(*stack);
 	*stack = NULL;
 	return ;
 }
 
-t_stack	*create_stack()
+int	free_all_stacks(t_stack **a, t_stack **b, int is_err)
+{
+	if (a && (*a))
+		free_stack(a);
+	if (b && (*b))
+		free_stack(b);
+	return (is_err);
+}
+
+t_stack	*create_stack(void)
 {
 	t_stack	*new_stack;
 
 	new_stack = malloc(sizeof(t_stack));
 	if (!new_stack)
 		return (NULL);
-	new_stack -> top = NULL;
-	new_stack -> bottom = NULL;
-	new_stack -> size = 0;
+	new_stack->top = NULL;
+	new_stack->bottom = NULL;
+	new_stack->size = 0;
 	return (new_stack);
 }
 

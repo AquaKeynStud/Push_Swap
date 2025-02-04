@@ -6,14 +6,14 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:00:31 by keyn              #+#    #+#             */
-/*   Updated: 2025/02/04 14:24:43 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 15:29:54 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
 
-int	check_no_char(char *s)
+static int	check_no_char(char *s)
 {
 	while (*s)
 	{
@@ -34,7 +34,7 @@ int	check_no_char(char *s)
 	return (0);
 }
 
-int	parse_input_string(char *s)
+static int	parse_input_string(char *s)
 {
 	long	n;
 	long	temp;
@@ -59,7 +59,7 @@ int	parse_input_string(char *s)
 	return (0);
 }
 
-int	parse_input_args(char **s)
+static int	parse_input_args(char **s)
 {
 	long	n;
 	long	temp;
