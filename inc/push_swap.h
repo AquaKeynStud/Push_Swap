@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 11:31:10 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 12:13:29 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	index_stack(t_stack *stack);
 void	swap(t_stack **stack, char *s_name);
 void	push(t_stack **from, t_stack **to, char *to_name);
 void	rotate(t_stack **stack, char *name);
-void	rotate_reverse(t_stack **stack, char *name);
+void	reverse_rotate(t_stack **stack, char *name);
 void	rrotate(t_stack **a, t_stack **b);
-void	rrotate_reverse(t_stack **a, t_stack **b);
+void	rreverse_rotate(t_stack **a, t_stack **b);
 void	sswap(t_stack **a, t_stack **b);
 
 /* -- A ENLEVER -- */

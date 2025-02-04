@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:39:08 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/03 18:20:42 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 12:13:50 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rotate(t_stack **stack, char *name)
 	return ;
 }
 
-void	rotate_reverse(t_stack **stack, char *name)
+void	reverse_rotate(t_stack **stack, char *name)
 {
 	t_node	*tmp;
 	t_node	*prev_last;
@@ -60,12 +60,12 @@ void	rrotate(t_stack **a, t_stack **b)
 	print("rr\n");
 }
 
-void	rrotate_reverse(t_stack **a, t_stack **b)
+void	rreverse_rotate(t_stack **a, t_stack **b)
 {
 	if (!(!a || !(*a) || !(*a) -> top || (*a) -> size <= 1))
-		rotate_reverse(a, NULL);
+		reverse_rotate(a, NULL);
 	if (!(!b || !(*b) || !(*b) -> top || (*b) -> size <= 1))
-		rotate_reverse(b, NULL);
+		reverse_rotate(b, NULL);
 	print("rrr\n");
 	return ;
 }
