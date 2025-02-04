@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:04:01 by keyn              #+#    #+#             */
-/*   Updated: 2025/02/04 16:06:56 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 18:04:35 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ t_node	*get_max(t_stack *stack, int no_index)
 	t_node	*max;
 	t_node	*current;
 
-	if (!stack || !stack -> top)
+	if (!stack || !stack->top)
 		return (NULL);
-	current = stack -> top;
+	current = stack->top;
 	max = NULL;
 	while (current)
 	{
-		if (no_index && current -> index == -1)
+		if (no_index && current->index == -1)
 		{
-			if (!max || current -> value > max -> value)
+			if (!max || current->value > max->value)
 				max = current;
 		}
 		else if (!no_index)
 		{
-			if (!max || current -> value > max -> value)
+			if (!max || current->value > max->value)
 				max = current;
 		}
-		current = current -> next;
+		current = current->next;
 	}
 	return (max);
 }
@@ -53,13 +53,13 @@ void	index_stack(t_stack *stack)
 	int		index;
 	t_node	*max;
 
-	index = stack -> size - 1;
+	index = stack->size - 1;
 	while (index >= 0)
 	{
 		max = get_max(stack, 1);
 		if (max)
 		{
-			max -> index = index;
+			max->index = index;
 		}
 		index--;
 	}
@@ -68,22 +68,20 @@ void	index_stack(t_stack *stack)
 
 void	radix_sort(t_stack **a, t_stack **b)
 {
-	int	num_bits;
-	int	size;
-	int	i;
-	int	j;
-	t_node	*current;
+	int		num_bits;
+	int		size;
+	int		i;
+	int		j;
 
-	num_bits = get_num_bits(get_max(*a, 0) -> index);
+	num_bits = get_num_bits(get_max(*a, 0)->index);
 	i = 0;
 	while (i < num_bits)
 	{
 		j = 0;
-		size = (*a) -> size;
+		size = (*a)->size;
 		while (j < size)
 		{
-			current = (*a)->top;
-			if (((current->index >> i) & 1) == 0)
+			if ((((*a)->top->index >> i) & 1) == 0)
 				push(a, b, "pb\n");
 			else
 				rotate(a, "ra\n");

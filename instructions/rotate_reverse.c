@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:39:08 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 12:13:50 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 18:07:17 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	rotate(t_stack **stack, char *name)
 {
 	t_node	*tmp;
 
-	if (!stack || !(*stack) || !(*stack) -> top || (*stack) -> size <= 1)
+	if (!stack || !(*stack) || !(*stack)->top || (*stack)->size <= 1)
 		return ;
-	tmp = (*stack) -> top;
-	(*stack) -> top = (*stack) -> top -> next;
-	(*stack) -> bottom -> next = tmp;
-	tmp -> next = NULL;
-	(*stack) -> bottom = tmp;
+	tmp = (*stack)->top;
+	(*stack)->top = (*stack)->top->next;
+	(*stack)->bottom->next = tmp;
+	tmp->next = NULL;
+	(*stack)->bottom = tmp;
 	if (name)
 		print(name);
 	return ;
@@ -32,20 +32,20 @@ void	reverse_rotate(t_stack **stack, char *name)
 {
 	t_node	*tmp;
 	t_node	*prev_last;
-	
-	if (!stack || !(*stack) || !(*stack) -> top || (*stack) -> size <= 1)
+
+	if (!stack || !(*stack) || !(*stack)->top || (*stack)->size <= 1)
 		return ;
-	tmp = (*stack) -> top;
+	tmp = (*stack)->top;
 	prev_last = NULL;
-	while (tmp -> next)
+	while (tmp->next)
 	{
 		prev_last = tmp;
-		tmp = tmp -> next;
+		tmp = tmp->next;
 	}
-	prev_last -> next = NULL;
-	(*stack) -> bottom = prev_last;
-	tmp -> next = (*stack) -> top;
-	(*stack) -> top = tmp;
+	prev_last->next = NULL;
+	(*stack)->bottom = prev_last;
+	tmp->next = (*stack)->top;
+	(*stack)->top = tmp;
 	if (name)
 		print(name);
 	return ;
@@ -53,18 +53,18 @@ void	reverse_rotate(t_stack **stack, char *name)
 
 void	rrotate(t_stack **a, t_stack **b)
 {
-	if (!(!a || !(*a) || (*a) -> size <= 1))
+	if (!(!a || !(*a) || (*a)->size <= 1))
 		rotate(a, NULL);
-	if (!(!b || !(*b) || (*b) -> size <= 1))
+	if (!(!b || !(*b) || (*b)->size <= 1))
 		rotate(b, NULL);
 	print("rr\n");
 }
 
 void	rreverse_rotate(t_stack **a, t_stack **b)
 {
-	if (!(!a || !(*a) || !(*a) -> top || (*a) -> size <= 1))
+	if (!(!a || !(*a) || !(*a)->top || (*a)->size <= 1))
 		reverse_rotate(a, NULL);
-	if (!(!b || !(*b) || !(*b) -> top || (*b) -> size <= 1))
+	if (!(!b || !(*b) || !(*b)->top || (*b)->size <= 1))
 		reverse_rotate(b, NULL);
 	print("rrr\n");
 	return ;

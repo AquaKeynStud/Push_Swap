@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 15:25:23 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/04 18:08:53 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 
 # include <stdlib.h>
 
-#include <stdio.h>
-
 /* -- Structures -- */
-typedef struct	s_node
+typedef struct s_node
 {
 	int				value;
 	int				index;
-	struct	s_node	*next;
-	struct	s_node	*prev;
+	struct s_node	*next;
+	struct s_node	*prev;
 }				t_node;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	t_node	*top;
 	t_node	*bottom;
@@ -42,7 +40,7 @@ int		print(char *s);
 int		check_input(int argc, char **argv);
 int		sorted_test(t_stack	*stack);
 
-t_stack	*create_stack();
+t_stack	*create_stack(void);
 t_stack	*init_stack(char **argv, int isLongString);
 void	create_node_back(t_stack **stack, int n);
 void	free_stack(t_stack **stack);
@@ -63,6 +61,6 @@ void	rreverse_rotate(t_stack **a, t_stack **b);
 void	sswap(t_stack **a, t_stack **b);
 
 /* -- A ENLEVER -- */
-void print_stack(t_stack *stack, char *name);
+//void	print_stack(t_stack *stack, char *name);
 
 #endif

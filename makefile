@@ -52,29 +52,29 @@ INC		=	$(addprefix $(D_INC), $(LST_INC))
 
 UT		=	$(addprefix $(D_UT), $(LST_UT))
 
-OBJ	=	$(subst  $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
-OBJ	+=	$(subst  $(D_UTL), $(D_OBJ), $(UTL:.c=.o))
-OBJ	+=	$(subst  $(D_INST), $(D_OBJ), $(INST:.c=.o))
+OBJ		=	$(subst  $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
+OBJ		+=	$(subst  $(D_UTL), $(D_OBJ), $(UTL:.c=.o))
+OBJ		+=	$(subst  $(D_INST), $(D_OBJ), $(INST:.c=.o))
 
-OBJ	+=	$(subst  $(D_UT), $(D_OBJ), $(UT:.c=.o))
+OBJ		+=	$(subst  $(D_UT), $(D_OBJ), $(UT:.c=.o))
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ RULES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME)		:	$(OBJ)
 	@$(CC) $(OBJ) -o $@
 	@echo "\e[0;32mProgramme créé avec succès ! 🧬\e[0m"
 
-$(D_OBJ)%.o: $(D_SRC)%.c $(D_INC)push_swap.h
+$(D_OBJ)%.o	:	$(D_SRC)%.c $(D_INC)push_swap.h
 	@mkdir -p $(D_OBJ)
 	$(CC) $(CFLAGS) -I$(D_INC) -c $< -o $@
 
-$(D_OBJ)%.o: $(D_UTL)%.c $(D_INC)push_swap.h
+$(D_OBJ)%.o	:	$(D_UTL)%.c $(D_INC)push_swap.h
 	@mkdir -p $(D_OBJ)
 	$(CC) $(CFLAGS) -I$(D_INC) -c $< -o $@
 
-$(D_OBJ)%.o: $(D_INST)%.c $(D_INC)push_swap.h
+$(D_OBJ)%.o	:	$(D_INST)%.c $(D_INC)push_swap.h
 	@mkdir -p $(D_OBJ)
 	$(CC) $(CFLAGS) -I$(D_INC) -c $< -o $@
 
@@ -98,5 +98,8 @@ re :
 	$(MAKE) fclean
 	$(MAKE) all
 	@echo "\e[0;32mExecutable de push_swap recréé avec succès ! 🫡\e[0m"
+
+norminette:
+	norminette $(D_INC) $(D_SRC) $(D_INST) $(D_UTL)
 
 # dos2unix Makefile
