@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/03 16:45:01 by arocca           ###   ########.fr       */
+/*   Updated: 2025/02/04 11:31:10 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void	create_node_back(t_stack **stack, int n);
 void	free_stack(t_stack **stack);
 t_stack	*create_stack();
 t_stack	*init_stack(char **argv, int isLongString);
+
+t_node	*get_max(t_stack *stack, int no_index);
+int		get_num_bits(int max);
+void	radix_sort(t_stack **a, t_stack **b);
+void	index_stack(t_stack *stack);
 
 /* -- Instructions -- */
 void	swap(t_stack **stack, char *s_name);

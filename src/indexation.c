@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   indexation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 14:38:36 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/03 19:30:54 by keyn             ###   ########.fr       */
+/*   Created: 2025/02/03 23:44:01 by keyn              #+#    #+#             */
+/*   Updated: 2025/02/04 11:19:13 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+// int	*create_tab(t_stack **stack)
+// {
+// 	t_node	*current;
+// 	int		*tab;
+// 	int		i;
 
-void	push(t_stack **from, t_stack **to, char *to_name)
-{
-	t_node	*tmp;
-
-	if (!from || !(*from) || !((*from) -> top) || !to || !(*to))
-		return ;
-	tmp = (*from) -> top;
-	(*from) -> top = (*from) -> top -> next;
-	tmp -> next = (*to) -> top;
-	(*to) -> top = tmp;
-	(*from) -> size--;
-	(*to) -> size++;
-	print(to_name);
-	return ;
-}
+// 	i = 0;
+// 	tab = (int *)malloc(sizeof(int) * (*stack) -> size);
+// 	if (!tab)
+// 		return ;
+// 	current = (*stack) -> top;
+// 	while (current)
+// 	{
+// 		tab[i] = current -> value;
+// 		current = current -> next;
+// 		i++;
+// 	}
+// 	tab[i] = 0;
+// 	return (tab);
+// }

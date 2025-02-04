@@ -6,7 +6,7 @@ NAME = push_swap
 
 CC				:=	cc
 
-CFLAGS			:=	-Wall	-Wextra	-Werror
+CFLAGS			:= -g3 	-Wall	-Wextra	-Werror
 
 RM				:=	rm	-rf
 
@@ -29,6 +29,7 @@ D_UT	=	Tests_et_utils/
 LST_SRC		=	main.c				\
 				input_parsing.c		\
 				stacks.c			\
+				radix_sort.c		\
 
 LST_UTL		=	pass_next_nb.c		\
 				ft_atol.c			\
@@ -62,7 +63,7 @@ OBJ	+=	$(subst  $(D_UT), $(D_OBJ), $(UT:.c=.o))
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@$(CC) -g $(OBJ) -o $@
+	@$(CC) $(OBJ) -o $@
 	@echo "\e[0;32mProgramme créé avec succès ! 🧬\e[0m"
 
 $(D_OBJ)%.o: $(D_SRC)%.c $(D_INC)push_swap.h

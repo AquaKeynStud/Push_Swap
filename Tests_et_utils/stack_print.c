@@ -22,7 +22,7 @@ void print_stack(t_stack *stack, char *name)
 
     if (!stack || !stack->top)
     {
-        printf("Stack is empty.\n");
+        printf("Stack %s is empty.\n", name);
         return;
     }
     current = stack->top;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:20:49 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/03 14:19:25 by arocca           ###   ########.fr       */
+/*   Updated: 2025/02/04 11:22:30 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	create_node_back(t_stack **stack, int n)
 	if (!new_node)
 		return (free_stack(stack));
 	new_node -> value = n;
-	new_node -> index = (*stack) -> size;
+	new_node -> index = -1;
 	new_node -> next = NULL;
 	new_node -> prev = NULL;
 	if (!(*stack) -> top)

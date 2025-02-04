@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   rotate_reverse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:39:08 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/03 16:36:59 by arocca           ###   ########.fr       */
+/*   Updated: 2025/02/03 18:20:42 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ void	rotate_reverse(t_stack **stack, char *name)
 
 void	rrotate(t_stack **a, t_stack **b)
 {
-	if !(!a || !(*a) || (*a) -> size <= 1)
+	if (!(!a || !(*a) || (*a) -> size <= 1))
 		rotate(a, NULL);
-	if !(!b || !(*b) || (*b) -> size <= 1)
+	if (!(!b || !(*b) || (*b) -> size <= 1))
 		rotate(b, NULL);
 	print("rr\n");
 }
 
 void	rrotate_reverse(t_stack **a, t_stack **b)
 {
-	if !(!a || !(*a) || !(*a) -> top || (*a) -> size <= 1)
+	if (!(!a || !(*a) || !(*a) -> top || (*a) -> size <= 1))
 		rotate_reverse(a, NULL);
-	if !(!b || !(*b) || !(*b) -> top || (*b) -> size <= 1)
+	if (!(!b || !(*b) || !(*b) -> top || (*b) -> size <= 1))
 		rotate_reverse(b, NULL);
 	print("rrr\n");
 	return ;
