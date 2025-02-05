@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 18:08:53 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/05 18:56:48 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_stack	*create_stack(void);
 t_stack	*init_stack(char **argv, int isLongString);
 void	create_node_back(t_stack **stack, int n);
 void	free_stack(t_stack **stack);
-int		free_all_stacks(t_stack **a, t_stack **b, int is_err);
+int		free_all_stacks(t_stack **a, t_stack **b);
 
 t_node	*get_max(t_stack *stack, int no_index);
 int		get_num_bits(int max);
@@ -61,6 +61,6 @@ void	rreverse_rotate(t_stack **a, t_stack **b);
 void	sswap(t_stack **a, t_stack **b);
 
 /* -- A ENLEVER -- */
-//void	print_stack(t_stack *stack, char *name);
+void	print_stack(t_stack *stack, char *name);
 
 #endif

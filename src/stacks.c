@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:20:49 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 15:25:44 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/05 18:15:07 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	free_stack(t_stack **stack)
 	return ;
 }
 
-int	free_all_stacks(t_stack **a, t_stack **b, int is_err)
+int	free_all_stacks(t_stack **a, t_stack **b)
 {
 	if (a && (*a))
 		free_stack(a);
 	if (b && (*b))
 		free_stack(b);
-	return (is_err);
+	return (0);
 }
 
 t_stack	*create_stack(void)

@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:04:01 by keyn              #+#    #+#             */
-/*   Updated: 2025/02/04 18:04:35 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/05 22:40:33 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,19 @@ void	radix_sort(t_stack **a, t_stack **b)
 				rotate(a, "ra\n");
 			j++;
 		}
-		while ((*b) && (*b)->size > 0)
-			push(b, a, "pa\n");
+		j = 0;
+		size = (*b)->size;
+		while (j < size)
+		{
+			if (((((*b)->top->index >> i) & 1) == 0))
+				rotate(b, "rb\n");
+			else
+				push(b, a, "pa\n");
+			j++;
+		}
 		i++;
 	}
+	while ((*b) && (*b)->size > 0)
+		push(b, a, "pa\n");
 	return ;
 }

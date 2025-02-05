@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:29:58 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/04 18:06:06 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/05 22:13:05 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,10 @@ void	little_sort(t_stack *stack)
 void	middle_sort(t_stack *a, t_stack *b)
 {
 	t_node	*current;
+	int		mid_size;
 
-	while (a->size > 3)
+	mid_size = a->size / 2;
+	while (a->size > mid_size)
 	{
 		current = a->top;
 		if (current->index < 3)
@@ -97,23 +99,24 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 
 	if (check_input(argc, argv))
-		return (free_all_stacks(&a, NULL, 1));
+		return (1);
 	a = init_stack(argv + 1, (argc == 2));
 	if (sorted_test(a))
-		return (free_all_stacks(&a, NULL, 0));
+		return (free_all_stacks(&a, NULL));
 	index_stack(a);
 	if (a->size <= 3)
 	{
 		little_sort(a);
-		return (free_all_stacks(&a, &b, 0));
+		return (free_all_stacks(&a, NULL));
 	}
 	b = create_stack();
 	if (a->size <= 6)
 	{
 		middle_sort(a, b);
-		return (free_all_stacks(&a, &b, 0));
+		print_stack(a, "a");
+		return (free_all_stacks(&a, &b));
 	}
 	radix_sort(&a, &b);
-	free_all_stacks(&a, &b, 0);
+	free_all_stacks(&a, &b);
 	return (0);
 }
