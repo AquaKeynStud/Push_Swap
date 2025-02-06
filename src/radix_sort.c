@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:04:01 by keyn              #+#    #+#             */
-/*   Updated: 2025/02/06 12:57:23 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:42:14 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,35 @@ void	index_stack(t_stack *stack)
 	return ;
 }
 
+static void	manage_index(t_stack **a, t_stack **b, int i)
+{
+	int		size;
+	int		j;
+
+	j = 0;
+	size = (*a)->size;
+	while (j < size)
+	{
+		if ((((*a)->top->index >> i) & 1) == 0)
+			push(a, b, "pb\n");
+		else
+			rotate(a, "ra\n");
+		j++;
+	}
+}
+
 void	radix_sort(t_stack **a, t_stack **b)
 {
 	int		num_bits;
-	int		size;
 	int		i;
+	int		size;
 	int		j;
 
 	num_bits = get_num_bits(get_max(*a, 0)->index);
 	i = 0;
 	while (i < num_bits)
 	{
-		j = 0;
-		size = (*a)->size;
-		while (j < size)
-		{
-			if ((((*a)->top->index >> i) & 1) == 0)
-				push(a, b, "pb\n");
-			else
-				rotate(a, "ra\n");
-			j++;
-		}
+		manage_index(a, b, i);
 		j = 0;
 		size = (*b)->size;
 		while (j < size)

@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:39:20 by arocca            #+#    #+#             */
-/*   Updated: 2025/01/30 16:25:48 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:52:18 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
+#include <unistd.h>
 
 long	ft_atol(const char *nptr)
 {
@@ -35,4 +36,32 @@ long	ft_atol(const char *nptr)
 			return (LONG_MAX);
 	}
 	return (((long)res) * sign);
+}
+
+int	pass_next_nb(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] && (s[i] >= '0' && s[i] <= '9'))
+		i++;
+	while (s[i] && (s[i] == ' ' || s[i] == '-' || s[i] == '+'))
+		i++;
+	return (i);
+}
+
+int	print(char *s)
+{
+	int	i;
+	int	success;
+
+	i = 0;
+	while (s[i])
+		i++;
+	if (!s)
+		return (-1);
+	success = write(1, s, i);
+	if (success == -1)
+		return (-1);
+	return (1);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:29:58 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/06 09:43:35 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:48:32 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sorted_test(t_stack	*stack)
+static int	is_sorted(t_stack	*stack)
 {
 	t_node	*current;
 
@@ -28,23 +28,7 @@ int	sorted_test(t_stack	*stack)
 	return (1);
 }
 
-int	reverse_sorted_test(t_stack *stack)
-{
-	t_node	*current;
-
-	if (!stack || !stack->top)
-		return (1);
-	current = stack->top;
-	while (current->next)
-	{
-		if (current->value < current->next->value)
-			return (0);
-		current = current->next;
-	}
-	return (1);
-}
-
-void	little_sort(t_stack *stack)
+static void	little_sort(t_stack *stack)
 {
 	t_node	*max;
 
@@ -53,7 +37,7 @@ void	little_sort(t_stack *stack)
 	if (stack->size == 3)
 	{
 		max = get_max(stack, 0);
-		while (!sorted_test(stack))
+		while (!is_sorted(stack))
 		{
 			if (max == stack->bottom)
 				swap(&stack, "sa\n");
@@ -66,31 +50,28 @@ void	little_sort(t_stack *stack)
 	return ;
 }
 
-void	middle_sort(t_stack *a, t_stack *b)
+static void	middle_sort(t_stack *a, t_stack *b)
 {
-	t_node	*current;
-	int		mid_size;
-
-	mid_size = a->size / 2;
-	while (a->size > mid_size)
+	if (a->size == 4)
 	{
-		current = a->top;
-		if (current->index < 3)
-			push(&a, &b, "pb\n");
-		else
+		while (a->top->index != 0)
 			rotate(&a, "ra\n");
-	}
-	if (!reverse_sorted_test(b))
-	{
-		little_sort(b);
-		swap(&b, "sb\n");
-		reverse_rotate(&b, "rrb\n");
-	}
-	if (!sorted_test(a))
+		push(&a, &b, "pb\n");
 		little_sort(a);
-	while (b->size > 0)
 		push(&b, &a, "pa\n");
-	return ;
+		return ;
+	}
+	while (a->size > 3)
+	{
+		while (a->top->index > 1)
+			rotate(&a, "ra\n");
+		push(&a, &b, "pb\n");
+	}
+	little_sort(a);
+	push(&b, &a, "pa\n");
+	push(&b, &a, "pa\n");
+	if (!is_sorted(a))
+		swap(&a, "sa\n");
 }
 
 int	main(int argc, char **argv)
@@ -101,7 +82,7 @@ int	main(int argc, char **argv)
 	if (check_input(argc, argv))
 		return (1);
 	a = init_stack(argv + 1, (argc == 2));
-	if (sorted_test(a))
+	if (is_sorted(a))
 		return (free_all_stacks(&a, NULL));
 	index_stack(a);
 	if (a->size <= 3)
@@ -110,7 +91,7 @@ int	main(int argc, char **argv)
 		return (free_all_stacks(&a, NULL));
 	}
 	b = create_stack();
-	if (a->size <= 6)
+	if (a->size <= 5)
 	{
 		middle_sort(a, b);
 		return (free_all_stacks(&a, &b));
