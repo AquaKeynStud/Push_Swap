@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:29:58 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/05 22:13:05 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/06 09:43:35 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ int	main(int argc, char **argv)
 	if (a->size <= 6)
 	{
 		middle_sort(a, b);
-		print_stack(a, "a");
 		return (free_all_stacks(&a, &b));
 	}
 	radix_sort(&a, &b);

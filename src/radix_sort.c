@@ -6,7 +6,7 @@
 /*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:04:01 by keyn              #+#    #+#             */
-/*   Updated: 2025/02/05 22:40:33 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/06 12:57:23 by keyn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ void	index_stack(t_stack *stack)
 	{
 		max = get_max(stack, 1);
 		if (max)
-		{
 			max->index = index;
-		}
 		index--;
 	}
 	return ;
@@ -101,5 +99,4 @@ void	radix_sort(t_stack **a, t_stack **b)
 	}
 	while ((*b) && (*b)->size > 0)
 		push(b, a, "pa\n");
-	return ;
 }
