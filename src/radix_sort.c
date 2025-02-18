@@ -6,7 +6,7 @@
 /*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:04:01 by keyn              #+#    #+#             */
-/*   Updated: 2025/02/06 16:42:14 by arocca           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:06:06 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_node	*get_max(t_stack *stack, int no_index)
 	return (max);
 }
 
-int	get_num_bits(int max)
+static int	get_num_bits(int max)
 {
 	int	bits;
 

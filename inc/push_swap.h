@@ -6,7 +6,7 @@
 /*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:48:42 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/06 16:46:52 by arocca           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:05:34 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,14 @@ typedef struct s_stack
 
 t_stack	*create_stack(void);
 t_stack	*init_stack(char **argv, int isLongString);
-void	create_node_back(t_stack **stack, int n);
 void	free_stack(t_stack **stack);
 int		free_all_stacks(t_stack **a, t_stack **b);
 
-/* -- Sources -- */
+/* -- Parsing -- */
 int		check_input(int argc, char **argv);
-int		sorted_test(t_stack	*stack);
 
+/* -- Radix Sort -- */
 t_node	*get_max(t_stack *stack, int no_index);
-int		get_num_bits(int max);
 void	index_stack(t_stack *stack);
 void	radix_sort(t_stack **a, t_stack **b);
 
@@ -53,11 +51,11 @@ int		print(char *s);
 
 /* -- Instructions -- */
 void	swap(t_stack **stack, char *s_name);
+void	sswap(t_stack **a, t_stack **b);
 void	push(t_stack **from, t_stack **to, char *to_name);
 void	rotate(t_stack **stack, char *name);
-void	reverse_rotate(t_stack **stack, char *name);
 void	rrotate(t_stack **a, t_stack **b);
+void	reverse_rotate(t_stack **stack, char *name);
 void	rreverse_rotate(t_stack **a, t_stack **b);
-void	sswap(t_stack **a, t_stack **b);
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keyn <keyn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: arocca <arocca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:20:49 by arocca            #+#    #+#             */
-/*   Updated: 2025/02/05 18:15:07 by keyn             ###   ########.fr       */
+/*   Updated: 2025/02/18 16:06:11 by arocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	create_node_back(t_stack **stack, int n)
+static void	create_node(t_stack **stack, int n)
 {
 	t_node	*new_node;
 
@@ -91,14 +91,14 @@ t_stack	*init_stack(char **argv, int isLongString)
 			argv[0]++;
 		while (*argv[0])
 		{
-			create_node_back(&stack, (int)ft_atol(argv[0]));
+			create_node(&stack, (int)ft_atol(argv[0]));
 			argv[0] += pass_next_nb(argv[0]);
 		}
 	}
 	else
 	{
 		while (argv[i])
-			create_node_back(&stack, (int)ft_atol(argv[i++]));
+			create_node(&stack, (int)ft_atol(argv[i++]));
 	}
 	return (stack);
 }
