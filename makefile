@@ -1,4 +1,4 @@
-.PHONY : all clean fclean re clear mandatory bonus
+.PHONY : all clean fclean re
 
 NAME = push_swap
 
